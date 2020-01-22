@@ -12,7 +12,9 @@
         <br>
         <h1 class="display-4">Send Message</h1>
         <br>
-        <input class="form-control" placeholder="Name">
+        <input id="Name" class="form-control" placeholder="Name">
+        <br>
+        <textarea id="message" class="form-control" placeholder="Message"></textarea>
         <br>
         <button id="send" class="btnsend">Send</button>
     </div>
@@ -24,7 +26,8 @@
     $(()=> {
         console.log('loaded')
         $("#send").click(()=>{
-            addmessages({name:'Sumesh',message:'Hello humans !'})
+            var message = {name: $("#name").val() , message: $("#message").val()}
+            postMessage(message)
         });
 
     });
@@ -35,9 +38,6 @@
 
     function getmessages(data){
         $.get('http://localhost:3000/main', (data)=>{
-            data.forEach(function(element){
-                addmessages(element)
-            }, this);
-        })
+            data.forEach(addmessages)
     }
 </script>

@@ -1,5 +1,8 @@
 var express = require("express")
 var app = express();
+var parse = require("body-parser")
+
+app.use(parse.json())
 
 var messages = 
 [
@@ -15,3 +18,9 @@ var server = app.listen(3000, ()=>{
 app.get('/main', (req,res)=>{
 	res.send(messages)
 }) 
+
+app.post('/main', (req,res)=>{
+	console.log(req.body)
+	messages.push(req.body)
+	res.sendStatus(200);
+})
