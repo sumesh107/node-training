@@ -1,7 +1,6 @@
 var express = require("express")
 var app = express();
 var parse = require("body-parser")
-
 app.use(parse.json())
 
 var messages = 
@@ -20,7 +19,7 @@ app.get('/main', (req,res)=>{
 }) 
 
 app.post('/main', (req,res)=>{
-	console.log(req.body)
-	messages.push(req.body)
+	console.log(req.body);
+	messages.push(req.body);
 	res.sendStatus(200);
 })
