@@ -28,3 +28,8 @@ app.post('/main', (req,res)=>{
 	messages.push(req.body);
 	res.sendStatus(200);
 })
+
+//socket connection 
+io.on('connection', (socket) => {
+	console.log("a user is connected")
+})
